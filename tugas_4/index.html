@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/images/favicon-32x32.png"
+        />
+        <link href="./style.css" rel="stylesheet" />
+        <title>Typing Speed Test</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body
+        class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8"
+    >
+        <div class="max-w-4xl w-full flex flex-col gap-8">
+            <header class="flex justify-between items-start">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-brand-primary/10 rounded-lg">
+                        <img 
+                            src="assets/images/logo-small.svg" 
+                            alt="Typing Speed Test" 
+                            class="w-8 h-8"
+                        />
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-brand-text">
+                            Typing Speed Test
+                        </h1>
+                        <p class="text-xs text-brand-primary">
+                            Type as fast as you can in 60 seconds
+                        </p>
+                    </div>
+                </div>
+                <div class="text-sm">
+                    <span class="text-brand-primary">🏆 Personal best:</span>
+                    <span id="personal-best" class="text-brand-text font-bold"
+                        >0 WPM</span
+                    >
+                </div>
+            </header>
+
+            <div
+                class="flex flex-wrap items-center gap-4 md:gap-6 py-4 border-y border-brand-primary/10"
+            >
+                <div class="flex items-center gap-2">
+                    <span class="stat-label-inline">WPM:</span>
+                    <span id="wpm" class="stat-value-inline text-brand-text">0</span>
+                </div>
+
+                <span class="divider">|</span>
+
+                <div class="flex items-center gap-2">
+                    <span class="stat-label-inline">Accuracy:</span>
+                    <span id="accuracy" class="stat-value-inline text-red-500">0%</span>
+                </div>
+
+                <span class="divider">|</span>
+
+                <div class="flex items-center gap-2">
+                    <span class="stat-label-inline">Time:</span>
+                    <span id="time" class="stat-value-inline text-yellow-500">0:00</span>
+                </div>
+
+                <div class="flex-grow hidden md:block"></div>
+
+                <div class="flex items-center gap-3">
+                    <span class="stat-label-inline">Difficulty:</span>
+                    <div class="flex gap-2">
+                        <button class="diff-btn control-btn" data-diff="easy">Easy</button>
+                        <button class="diff-btn control-btn" data-diff="medium">Medium</button>
+                        <button class="diff-btn control-btn active" data-diff="hard">Hard</button>
+                    </div>
+                </div>
+
+                <span class="divider">|</span>
+
+                <div class="flex items-center gap-3">
+                    <span class="stat-label-inline">Mode:</span>
+                    <div class="flex gap-2">
+                        <button class="mode-btn control-btn active" data-mode="timed">Timed (60s)</button>
+                        <button class="mode-btn control-btn" data-mode="passage">Passage</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="typing-container" class="relative min-h-50 cursor-text">
+                <div id="cursor" class="cursor hidden"></div>
+                <div
+                    id="typing-area"
+                    class="typing-area font-mono text-brand-primary transition-opacity duration-300"
+                ></div>
+                <div
+                    id="start-overlay"
+                    class="absolute inset-0 flex items-center justify-center bg-brand-bg/80 backdrop-blur-sm transition-opacity duration-300"
+                >
+                    <p class="text-brand-text text-lg animate-pulse">
+                        Click here or start typing to begin...
+                    </p>
+                </div>
+            </div>
+
+            <div
+                id="focus-error"
+                class="flex items-center justify-center gap-2 text-brand-text animate-pulse"
+            >
+                <span>Click to refocus</span>
+            </div>
+
+            <div
+                class="flex justify-center border-t border-brand-primary/10 pt-8"
+            >
+                <button
+                    id="restart-btn"
+                    class="flex items-center gap-2 px-6 py-2 bg-brand-primary/10 hover:bg-brand-primary/20 text-brand-text rounded-lg transition-all font-bold group"
+                >
+                    <span>Restart Test</span>
+                    <img
+                        src="assets/images/icon-restart.svg"
+                        alt="Restart"
+                        class="w-4 h-4 group-hover:rotate-180 transition-transform duration-300"
+                    />
+                </button>
+            </div>
+        </div>
+
+        <div
+            id="results-modal"
+            class="fixed inset-0 flex items-center justify-center bg-brand-bg/95 backdrop-blur-md z-50"
+        >
+            <div
+                class="max-w-md w-full p-8 bg-black/30 rounded-2xl border border-brand-primary/20 shadow-2xl flex flex-col gap-6 text-center transform scale-90 transition-transform duration-300"
+                id="results-content"
+            >
+                <h2 class="text-3xl font-bold text-brand-text">
+                    Test Complete!
+                </h2>
+
+                <div class="grid grid-cols-2 gap-4 py-4">
+                    <div class="bg-brand-primary/10 p-4 rounded-xl">
+                        <div
+                            class="text-xs text-brand-primary uppercase font-bold mb-1"
+                        >
+                            WPM
+                        </div>
+                        <div
+                            id="result-wpm"
+                            class="text-4xl font-black text-yellow-500"
+                        >
+                            0
+                        </div>
+                    </div>
+                    <div class="bg-brand-primary/10 p-4 rounded-xl">
+                        <div
+                            class="text-xs text-brand-primary uppercase font-bold mb-1"
+                        >
+                            Accuracy
+                        </div>
+                        <div
+                            id="result-accuracy"
+                            class="text-4xl font-black text-green-500"
+                        >
+                            0%
+                        </div>
+                    </div>
+                    <div class="bg-brand-primary/10 p-4 rounded-xl">
+                        <div
+                            class="text-xs text-brand-primary uppercase font-bold mb-1"
+                        >
+                            Errors
+                        </div>
+                        <div
+                            id="result-errors"
+                            class="text-4xl font-black text-red-500"
+                        >
+                            0
+                        </div>
+                    </div>
+                    <div
+                        id="result-pb-badge"
+                        class="bg-brand-primary/10 p-4 rounded-xl hidden"
+                    >
+                        <div
+                            class="text-xs text-brand-primary uppercase font-bold mb-1"
+                        >
+                            Status
+                        </div>
+                        <div
+                            class="text-xl font-black text-yellow-500 flex items-center justify-center gap-1"
+                        >
+                            <span>New Personal Best!</span>
+                            <span class="text-2xl">🔥</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-3">
+                    <button
+                        id="modal-restart-btn"
+                        class="w-full py-4 bg-yellow-500 hover:bg-yellow-600 text-brand-bg font-black rounded-xl transition-all uppercase tracking-widest shadow-lg shadow-yellow-500/20 active:scale-95"
+                    >
+                        Try Again
+                    </button>
+                    <p class="text-xs text-brand-primary">
+                        Press
+                        <kbd class="px-2 py-1 bg-brand-primary/20 rounded"
+                            >Esc</kbd
+                        >
+                        or
+                        <kbd class="px-2 py-1 bg-brand-primary/20 rounded"
+                            >Tab</kbd
+                        >
+                        to restart
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-12 text-xs text-brand-primary opacity-50">
+            Challenge by
+            <a
+                href="https://www.frontendmentor.io?ref=challenge"
+                target="_blank"
+                class="underline"
+                >Frontend Mentor</a
+            >. Coded by
+            <a href="https://zainokta.com" class="underline">Zainokta</a>.
+        </footer>
+
+        <script src="./data.js"></script>
+        <script src="./script.js"></script>
+    </body>
+</html>
