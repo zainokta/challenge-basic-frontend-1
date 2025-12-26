@@ -21,19 +21,19 @@
 
 @layer components {
     .control-btn {
-        @apply px-3 py-1 text-xs rounded-lg transition-all font-bold text-brand-text border border-brand-primary/30 hover:border-brand-primary/60;
+        @apply px-3 py-1 text-xs rounded-lg transition-all font-bold text-brand-text border border-transparent hover:border-brand-primary/30 cursor-pointer;
     }
 
     .control-btn.active {
-        @apply border-brand-accent text-brand-accent bg-brand-accent/5;
+        @apply border-brand-accent text-brand-accent bg-transparent;
     }
 
     .stat-label-inline {
-        @apply text-sm text-brand-primary;
+        @apply text-brand-primary font-medium tracking-wider;
     }
 
     .stat-value-inline {
-        @apply text-xl font-bold;
+        @apply font-black;
     }
 
     .divider {
@@ -42,24 +42,26 @@
 
     .typing-area {
         position: relative;
-        font-size: 1.5rem;
         line-height: 1.5;
-        word-break: break-all;
+        word-break: break-word;
         user-select: none;
         outline: none;
+        text-align: left;
     }
 
     .char {
         position: relative;
         transition: color 0.1s ease;
+        color: var(--color-brand-primary);
     }
 
     .char.correct {
-        color: var(--color-brand-correct);
+        color: #4ade80; /* Success green */
     }
 
     .char.incorrect {
         color: var(--color-brand-incorrect);
+        background-color: rgba(202, 71, 84, 0.2);
         border-bottom: 2px solid var(--color-brand-incorrect);
     }
 

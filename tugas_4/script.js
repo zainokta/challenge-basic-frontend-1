@@ -23,9 +23,12 @@ class TypingTest {
         this.timeDisplay = document.getElementById('time');
         this.pbDisplay = document.getElementById('personal-best');
         this.startOverlay = document.getElementById('start-overlay');
+        this.startBtn = document.getElementById('start-btn');
         this.restartBtn = document.getElementById('restart-btn');
         this.difficultyBtns = document.querySelectorAll('.diff-btn');
         this.modeBtns = document.querySelectorAll('.mode-btn');
+        this.currentDifficultyDisplay = document.getElementById('current-difficulty');
+        this.currentModeDisplay = document.getElementById('current-mode');
         this.focusError = document.getElementById('focus-error');
 
         // Results Modal Elements
@@ -33,6 +36,7 @@ class TypingTest {
         this.resultsContent = document.getElementById('results-content');
         this.resultWpm = document.getElementById('result-wpm');
         this.resultAccuracy = document.getElementById('result-accuracy');
+        this.resultTyped = document.getElementById('result-typed');
         this.resultErrors = document.getElementById('result-errors');
         this.resultPbBadge = document.getElementById('result-pb-badge');
         this.modalRestartBtn = document.getElementById('modal-restart-btn');
@@ -60,26 +64,52 @@ class TypingTest {
         // Typing input
         window.addEventListener('keydown', (e) => this.handleKeyDown(e));
 
+        // Start button
+        this.startBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.startTest();
+        });
+
         // Restart buttons
         this.restartBtn.addEventListener('click', () => this.resetTest());
         this.modalRestartBtn.addEventListener('click', () => this.resetTest());
 
         // Difficulty selection
         this.difficultyBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
                 this.difficultyBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                // Find and activate all buttons with the same difficulty (both desktop and mobile)
+                document.querySelectorAll(`.diff-btn[data-diff="${btn.dataset.diff}"]`).forEach(b => b.classList.add('active'));
+                
                 this.difficulty = btn.dataset.diff;
+                if (this.currentDifficultyDisplay) {
+                    this.currentDifficultyDisplay.textContent = btn.textContent;
+                }
+                
+                // Close dropdown by blurring (only applies to mobile dropdown structure)
+                const dropdown = btn.closest('.group');
+                if (dropdown) dropdown.blur();
+                
                 this.resetTest();
             });
         });
 
         // Mode selection
         this.modeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
                 this.modeBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                // Find and activate all buttons with the same mode (both desktop and mobile)
+                document.querySelectorAll(`.mode-btn[data-mode="${btn.dataset.mode}"]`).forEach(b => b.classList.add('active'));
+                
                 this.mode = btn.dataset.mode;
+                if (this.currentModeDisplay) {
+                    this.currentModeDisplay.textContent = btn.textContent;
+                }
+                
+                // Close dropdown by blurring (only applies to mobile dropdown structure)
+                const dropdown = btn.closest('.group');
+                if (dropdown) dropdown.blur();
+                
                 this.resetTest();
             });
         });
@@ -294,6 +324,7 @@ class TypingTest {
         // Show Results Modal
         this.resultWpm.textContent = wpm;
         this.resultAccuracy.textContent = `${accuracy}%`;
+        this.resultTyped.textContent = this.typedCount;
         this.resultErrors.textContent = this.errorsCount;
 
         if (isNewPb) {
