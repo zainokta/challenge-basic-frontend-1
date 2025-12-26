@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@layer utilities {
+    .bg-cream {
+        background-color: hsl(30, 38%, 92%);
+    }
+}
