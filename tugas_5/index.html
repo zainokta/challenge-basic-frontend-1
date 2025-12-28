@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon-32x32.png"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400&family=Bellefair&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./style.css" />
+
+        <title>Frontend Mentor | Space tourism website</title>
+    </head>
+    <body
+        class="bg-[#0B0D17] text-white font-barlow min-h-screen flex flex-col bg-cover bg-center bg-no-repeat bg-[url('./assets/home/background-home-mobile.jpg')] md:bg-[url('./assets/home/background-home-tablet.jpg')] lg:bg-[url('./assets/home/background-home-desktop.jpg')]"
+    >
+        <header
+            class="flex items-center justify-between pt-6 md:pt-0 lg:pt-10 lg:pl-14 relative z-50"
+        >
+            <div class="pl-6 md:pl-10 lg:pl-0">
+                <img
+                    src="./assets/shared/logo.svg"
+                    alt="Logo"
+                    class="w-10 h-10 md:w-12 md:h-12"
+                />
+            </div>
+            <div
+                class="h-px bg-white opacity-25 grow ml-16 -mr-8 relative z-10 hidden lg:block"
+            ></div>
+
+            <button
+                class="mobile-nav-toggle"
+                aria-controls="primary-navigation"
+                aria-expanded="false"
+            >
+                <span class="sr-only">Menu</span>
+            </button>
+
+            <nav id="primary-navigation" data-visible="false">
+                <ul
+                    class="flex flex-col md:flex-row gap-8 md:gap-12 px-8 pt-32 md:pt-0 md:px-16 lg:px-40"
+                >
+                    <li
+                        class="nav-text border-r-4 md:border-r-0 md:border-b-4 border-white py-2 md:py-8"
+                    >
+                        <a href="index.html" class="flex items-center h-full"
+                            ><span class="font-bold mr-3 md:hidden lg:inline"
+                                >00</span
+                            >
+                            Home</a
+                        >
+                    </li>
+                    <li
+                        class="nav-text border-r-4 md:border-r-0 md:border-b-4 border-transparent hover:border-white/50 py-2 md:py-8 transition-colors"
+                    >
+                        <a
+                            href="destination-moon.html"
+                            class="flex items-center h-full"
+                            ><span class="font-bold mr-3 md:hidden lg:inline"
+                                >01</span
+                            >
+                            Destination</a
+                        >
+                    </li>
+                    <li
+                        class="nav-text border-r-4 md:border-r-0 md:border-b-4 border-transparent hover:border-white/50 py-2 md:py-8 transition-colors"
+                    >
+                        <a
+                            href="crew-commander.html"
+                            class="flex items-center h-full"
+                            ><span class="font-bold mr-3 md:hidden lg:inline"
+                                >02</span
+                            >
+                            Crew</a
+                        >
+                    </li>
+                    <li
+                        class="nav-text border-r-4 md:border-r-0 md:border-b-4 border-transparent hover:border-white/50 py-2 md:py-8 transition-colors"
+                    >
+                        <a
+                            href="technology-vehicle.html"
+                            class="flex items-center h-full"
+                            ><span class="font-bold mr-3 md:hidden lg:inline"
+                                >03</span
+                            >
+                            Technology</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main
+            class="grow flex flex-col lg:flex-row items-center lg:items-end justify-between px-6 md:px-24 lg:px-40 pt-12 pb-12 md:pb-24 lg:pb-32 text-center lg:text-left"
+        >
+            <div class="lg:max-w-112.5">
+                <h5
+                    class="text-preset-5 text-accent mb-6 text-[16px] md:text-[20px] lg:text-[28px]"
+                >
+                    So, you want to travel to
+                </h5>
+                <h1 class="text-preset-1 mb-6 text-[80px] md:text-[150px]">
+                    Space
+                </h1>
+                <p
+                    class="text-preset-8 text-accent text-[15px] md:text-[16px] lg:text-[18px]"
+                >
+                    Let’s face it; if you want to go to space, you might as well
+                    genuinely go to outer space and not hover kind of on the
+                    edge of it. Well sit back, and relax because we’ll give you
+                    a truly out of this world experience!
+                </p>
+            </div>
+
+            <div
+                class="flex items-center justify-center mt-20 lg:mt-0 lg:mb-12"
+            >
+                <a
+                    href="destination-moon.html"
+                    class="flex items-center justify-center w-37.5 h-37.5 md:w-60.5 md:h-60.5 lg:w-68.5 lg:h-68.5 bg-white text-dark rounded-full text-preset-4 text-[20px] md:text-[32px] tracking-[1.25px] md:tracking-[2px] transition-all duration-500 relative group shrink-0"
+                >
+                    <span class="relative z-10">EXPLORE</span>
+                    <div
+                        class="absolute inset-0 bg-white/10 rounded-full scale-100 group-hover:scale-150 transition-transform duration-500"
+                    ></div>
+                </a>
+            </div>
+        </main>
+
+        <script src="./script.js"></script>
+    </body>
+</html>

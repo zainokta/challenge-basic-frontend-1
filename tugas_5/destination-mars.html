@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./assets/favicon-32x32.png"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400&family=Bellefair&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./style.css" />
+
+        <title>Frontend Mentor | Space tourism website</title>
+    </head>
+    <body
+        class="bg-[#0B0D17] text-white font-barlow min-h-screen flex flex-col bg-cover bg-center bg-no-repeat bg-[url('./assets/destination/background-destination-mobile.jpg')] md:bg-[url('./assets/destination/background-destination-tablet.jpg')] lg:bg-[url('./assets/destination/background-destination-desktop.jpg')]"
+    >
+        <header
+            class="flex items-center justify-between pt-6 md:pt-0 lg:pt-10 lg:pl-14 relative z-50"
+        >
+            <div class="pl-6 md:pl-10 lg:pl-0">
+                <img
+                    src="./assets/shared/logo.svg"
+                    alt="Logo"
+                    class="w-10 h-10 md:w-12 md:h-12"
+                />
+            </div>
+            <div
+                class="h-px bg-white opacity-25 grow ml-16 -mr-8 relative z-10 hidden lg:block"
+            ></div>
+
+            <button
+                class="mobile-nav-toggle"
+                aria-controls="primary-navigation"
+                aria-expanded="false"
+            >
+                <span class="sr-only">Menu</span>
+            </button>
+
+            <nav id="primary-navigation" data-visible="false">
+                <ul
+                    class="flex flex-col md:flex-row gap-8 md:gap-12 px-8 pt-32 md:pt-0 md:px-16 lg:px-40"
+                >
+                    <li
+                        class="nav-text border-r-4 md:border-r-0 md:border-b-4 border-transparent hover:border-white/50 py-2 md:py-8 transition-colors"
+                    >
+                        <a href="index.html" class="flex items-center h-full"
+                            ><span class="font-bold mr-3 md:hidden lg:inline"
+                                >00</span
+                            >
+                            Home</a
+                        >
+                    </li>
+                    <li
+                        class="nav-text border-r-4 md:border-r-0 md:border-b-4 border-white py-2 md:py-8"
+                    >
+                        <a
+                            href="destination-moon.html"
+                            class="flex items-center h-full"
+                            ><span class="font-bold mr-3 md:hidden lg:inline"
+                                >01</span
+                            >
+                            Destination</a
+                        >
+                    </li>
+                    <li
+                        class="nav-text border-r-4 md:border-r-0 md:border-b-4 border-transparent hover:border-white/50 py-2 md:py-8 transition-colors"
+                    >
+                        <a
+                            href="crew-commander.html"
+                            class="flex items-center h-full"
+                            ><span class="font-bold mr-3 md:hidden lg:inline"
+                                >02</span
+                            >
+                            Crew</a
+                        >
+                    </li>
+                    <li
+                        class="nav-text border-r-4 md:border-r-0 md:border-b-4 border-transparent hover:border-white/50 py-2 md:py-8 transition-colors"
+                    >
+                        <a
+                            href="technology-vehicle.html"
+                            class="flex items-center h-full"
+                            ><span class="font-bold mr-3 md:hidden lg:inline"
+                                >03</span
+                            >
+                            Technology</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="grow flex flex-col px-6 md:px-24 lg:px-40 pb-20">
+            <h5
+                class="text-preset-5 mt-10 mb-8 md:mb-16 self-center md:self-start text-[16px] md:text-[20px] lg:text-[28px]"
+            >
+                <span class="font-bold opacity-25 mr-6">01</span> Pick your
+                destination
+            </h5>
+
+            <div
+                class="flex flex-col lg:flex-row items-center lg:items-end lg:justify-between lg:gap-40"
+            >
+                <div class="mb-12 lg:mb-0 animate-spin-slow">
+                    <img
+                        src="./assets/destination/image-mars.webp"
+                        alt="Mars"
+                        class="w-42.5 h-42.5 md:w-75 md:h-75 lg:w-111.25 lg:h-111.25"
+                    />
+                </div>
+
+                <div
+                    class="flex flex-col items-center lg:items-start lg:max-w-111.25"
+                >
+                    <ul class="flex gap-8 mb-10">
+                        <li
+                            class="nav-text border-b-2 border-transparent hover:border-white/50 pb-3 transition-colors"
+                        >
+                            <a href="destination-moon.html">Moon</a>
+                        </li>
+                        <li class="nav-text border-b-2 border-white pb-3">
+                            <a href="destination-mars.html">Mars</a>
+                        </li>
+                        <li
+                            class="nav-text border-b-2 border-transparent hover:border-white/50 pb-3 transition-colors"
+                        >
+                            <a href="destination-europa.html">Europa</a>
+                        </li>
+                        <li
+                            class="nav-text border-b-2 border-transparent hover:border-white/50 pb-3 transition-colors"
+                        >
+                            <a href="destination-titan.html">Titan</a>
+                        </li>
+                    </ul>
+
+                    <h2
+                        class="text-preset-2 mb-4 text-[56px] md:text-[80px] lg:text-[100px]"
+                    >
+                        Mars
+                    </h2>
+                    <p
+                        class="text-preset-8 text-accent text-center lg:text-left mb-12 text-[15px] md:text-[16px] lg:text-[18px]"
+                    >
+                        Don’t forget to pack your hiking boots. You’ll need them
+                        to tackle Olympus Mons, the tallest planetary mountain
+                        in our solar system. It’s two and a half times the size
+                        of Everest!
+                    </p>
+
+                    <div class="w-full h-px bg-white opacity-25 mb-8"></div>
+
+                    <div
+                        class="flex flex-col md:flex-row gap-8 md:gap-20 text-center lg:text-left"
+                    >
+                        <div>
+                            <span class="text-preset-7 text-accent mb-3 block"
+                                >Avg. distance</span
+                            >
+                            <span class="text-preset-6 text-[28px]"
+                                >225 mil. km</span
+                            >
+                        </div>
+                        <div>
+                            <span class="text-preset-7 text-accent mb-3 block"
+                                >Est. travel time</span
+                            >
+                            <span class="text-preset-6 text-[28px]"
+                                >9 months</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="./script.js"></script>
+    </body>
+</html>
