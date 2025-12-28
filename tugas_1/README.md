@@ -4,3 +4,6 @@ Taruh source code dari [Tugas 1](https://www.frontendmentor.io/challenges/qr-cod
 ```
 tailwindcss -i input.css -o style.css --watch
 ```
+
+# Live Website
+https://qr-preview.zainokta.com/
