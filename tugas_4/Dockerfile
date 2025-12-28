@@ -2,7 +2,9 @@ FROM debian:trixie-slim
 
 RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*
 
-COPY index.html style.css script.js data.js data.json assets /var/www/html/
+COPY . /var/www/html/
+
+RUN chmod -R 755 /var/www/html
 
 EXPOSE 80
 
