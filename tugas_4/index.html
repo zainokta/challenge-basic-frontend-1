@@ -72,7 +72,7 @@
                     </div>
                 </div>
 
-                <div class="flex-grow hidden md:block"></div>
+                <div class="grow hidden md:block"></div>
 
                 <!-- Desktop Controls (Inline) -->
                 <div class="hidden md:flex items-center gap-8">
@@ -95,7 +95,7 @@
             </div>
 
             <!-- Mobile Controls (Dropdowns) -->
-            <div class="flex md:hidden flex-wrap items-center gap-3 relative z-[60]">
+            <div class="flex md:hidden flex-wrap items-center gap-3 relative z-60">
                 <div class="relative group flex-1">
                     <button class="w-full flex items-center justify-between gap-2 px-4 py-2 text-sm rounded-lg border border-brand-primary/20 bg-brand-primary/5 text-brand-text font-bold">
                         <span id="current-difficulty">Hard</span>
@@ -141,7 +141,7 @@
 
             <div
                 id="focus-error"
-                class="flex items-center justify-center gap-2 text-brand-text animate-pulse hidden"
+                class="flex items-center justify-center gap-2 text-brand-text animate-pulse"
             >
                 <span>Click to refocus</span>
             </div>
@@ -165,7 +165,7 @@
 
         <div
             id="results-modal"
-            class="fixed inset-0 flex items-center justify-center bg-brand-bg/95 backdrop-blur-md z-50 p-4 hidden"
+            class="fixed inset-0 flex items-center justify-center bg-brand-bg/95 backdrop-blur-md z-50 p-4"
         >
             <div
                 class="max-w-md w-full p-6 md:p-8 bg-black/30 rounded-3xl border border-brand-primary/20 shadow-2xl flex flex-col items-center gap-4 md:gap-6 text-center transform scale-90 transition-transform duration-300"
